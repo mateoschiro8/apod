@@ -3,17 +3,20 @@
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
     min-height: 100vh;
     display: flex;
-    display: relative;
+    position: relative;
     color: white;
     background-color: #030615;
 }
 
+/*----------------------Main-------------------------*/
+
 .backgroundImgContainer {
-    display: flex;
-    flex-direction: column;
-    position: relative;
+    position: fixed;
+    inset: 0;
     max-height: 100vh;
     width: 100%;
+    display: flex;
+    flex-direction: column;
 }
 
 .backgroundImg {
@@ -22,6 +25,8 @@
     flex: 1;
     object-fit: cover; 
 }
+
+/*----------------------  -------------------------*/
 
 .backgroundGradient {
     position: absolute;
@@ -83,24 +88,19 @@ footer button:hover {
 .sideBar {
     top: 0;
     right: 0;
-    inset: 0;
     display: flex;
     flex-direction: column;
     z-index: 10;
-    position: relative;
-    inset: unset;
-    min-width: 30%;
+    position: absolute;
     box-shadow: 0 0 40px 1px #030615;
+    height: 100vh;
 }
 
 .backgroundOverlay {
     position: absolute;
-    inset: 0;
     background: #030615;
     opacity: 0.6;
-    right: 0;
-    left: unset;
-    width: 100vw;
+    inset: 0;
 }
 
 .sideBarContents {
@@ -112,11 +112,10 @@ footer button:hover {
     padding: 1rem;
     overflow-y: scroll;
     height: 100%;
-    width: 80%;
-    max-width: 800px;
-    margin-left: auto;
+    max-width: 300px;
     background: #030615;
-    margin: unset
+    margin: unset;
+
 }
 
 .sideBarContents h2 {

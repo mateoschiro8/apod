@@ -13,6 +13,10 @@ function App() {
         setShowModal(!showModal);
     }
     
+    function handleToggleModalForBackground() {
+        setShowModal(false)
+    }
+
     useEffect(() => {
         async function fetchAPIData() {
             const NASA_KEY = process.env.REACT_APP_NASA_API_KEY;
@@ -21,16 +25,9 @@ function App() {
             const today = (new Date()).toDateString();
             const localKey = `NASA-${today}`;
 
-            if (localStorage.getItem(localKey)) {
-                const apiData = JSON.parse(localStorage.getItem(localKey));
-                setData(apiData);
-                return
-            }
-
             try {
                 const res = await fetch(url);
-                const apiData = await res.json();
-                localStorage.setItem(localKey, JSON.stringify(apiData)); 
+                const apiData = await res.json(); 
                 setData(apiData);
             } catch(error) {
                 console.log(error);
@@ -41,12 +38,15 @@ function App() {
 
     return (
         <>
-            {data ? (<Main data={data}/>) : 
-            <div className="loadingState">
-                <i className="fa-solid fa-gear"></i>
-            </div>}
+            {data ? (<Main data={data} handleToggleModal={handleToggleModalForBackground}/>) : 
+                            (<div className="loadingState">
+                                <i className="fa-solid fa-gear"></i>
+                            </div>)}
+            
             {showModal && (<SideBar data={data} handleToggleModal={handleToggleModal}/>)}
+
             {data && (<Footer data={data} handleToggleModal={handleToggleModal}/>)}
+
         </>
     );
 }
