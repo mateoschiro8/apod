@@ -8,8 +8,6 @@
     background-color: #030615;
 }
 
-/*----------------------Main-------------------------*/
-
 .backgroundImgContainer {
     position: fixed;
     inset: 0;
@@ -25,8 +23,6 @@
     flex: 1;
     object-fit: cover; 
 }
-
-/*----------------------  -------------------------*/
 
 .backgroundGradient {
     position: absolute;
@@ -59,11 +55,11 @@ footer div {
 }
 
 footer h2 {
-    font-size: 1.4rem;
+    font-size: 2rem;
 }
 
 footer h1 {
-    font-size: 0.9rem;
+    font-size: 1.4rem;
     font-weight: 200%;
 }
 
@@ -83,6 +79,11 @@ footer button i {
 
 footer button:hover {
     opacity: 0.7;
+}
+
+.buttonsBar {
+    display: flex;
+    flex-direction: row;
 }
 
 .sideBar {
