@@ -95,13 +95,7 @@ footer button:hover {
     position: absolute;
     box-shadow: 0 0 40px 1px #030615;
     height: 100vh;
-}
-
-.backgroundOverlay {
-    position: absolute;
-    background: #030615;
-    opacity: 0.6;
-    inset: 0;
+    width: 25vw;
 }
 
 .sideBarContents {
@@ -113,15 +107,19 @@ footer button:hover {
     padding: 1rem;
     overflow-y: scroll;
     height: 100%;
-    max-width: 300px;
+    width: 100%;
     background: #030615;
     margin: unset;
-
+    font-weight: 200;
 }
 
 .sideBarContents h2 {
-    font-size: 1.4rem;
+    font-size: 2rem;
     font-weight: 200;
+}
+
+.sideBarContents p {
+    font-size: 1.2rem;
 }
 
 .sideBarContents div {
@@ -142,16 +140,14 @@ footer button:hover {
 .sideBarContents button:hover {
     opacity: 0.7;
 }
+
 .descriptionContainer {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    padding-left: 0%;
 }
 
-.descriptionTitle {
-    font-size: 1.1rem;
-    font-weight: 200;
-}   
 
 .loadingState {
     display: flex;
