@@ -157,8 +157,8 @@ footer button:hover {
 }
 
 .loadingState i {
-    opacity: 0.2;
-    font-size: 2rem;
+    opacity: 0.6;
+    font-size: 4rem;
     animation: spin 3s linear infinite;
 }
 
@@ -170,4 +170,13 @@ footer button:hover {
         transform: rotate(360deg);
     }
     
+}
+
+.calendar {
+    position: fixed;
+    bottom: 10%;
+    right: 1%;
+    background-color: #FEFAE0;
+    color: black;
+    border-radius: 5%;
 }
