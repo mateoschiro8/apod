@@ -1,10 +1,6 @@
 export default function Main(props) {
-    
-    // <img src={data?.hdurl} alt={data.title || "background"} className="backgroundImg"/>
-    // <img src="/mars.png" className="backgroundImg"/>
 
     const {handleToggleModal, data, handleLoading} = props;
-
     const isVideo = data.media_type == "video";
     
     if(isVideo)

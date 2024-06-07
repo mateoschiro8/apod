@@ -1,40 +1,52 @@
 import { useEffect, useState } from "react";
+
 import Footer from "./components/Footer.js"
 import Main from "./components/Main.js"
 import SideBar from "./components/SideBar.js"
-import './App.css';
 import DtPicker from "./components/DtPicker.js";
+import InfoProject from "./components/InfoProject.js"
+
+import './App.css';
+
 import dayjs from 'dayjs';
 
 function App() {
-    const [showModal, setShowModal] = useState(false);
-
-    const [loading, setLoading] = useState(true);
-    console.log(loading);
-
+    
     const [data, setData] = useState(null);
 
     const [selectedDate, setSelectedDate] = useState(dayjs());
 
+    const [showModal, setShowModal] = useState(false);
     function handleToggleModal() {
         setShowModal(!showModal);
+        setShowCalendar(false);
+        setShowInfo(false);
     }
     
     function handleToggleModalForBackground() {
         setShowModal(false);
         setShowCalendar(false);
+        setShowInfo(false);
     }
 
-    
     const [showCalendar, setShowCalendar] = useState(false);
     function handleToggleCalendar() {
         setShowCalendar(!showCalendar);
+        setShowModal(false);
+        setShowInfo(false);
     }
 
+    const [loading, setLoading] = useState(true);
     function handleLoading () {
         setLoading(false);
-        console.log(loading); 
     };
+
+    const [showInfo, setShowInfo] = useState(false);
+    function handleShowInfo() {
+        setShowInfo(!showInfo);
+        setShowModal(false);
+        setShowCalendar(false);
+    }
 
     useEffect(() => {
         async function fetchAPIData() {
@@ -47,9 +59,6 @@ function App() {
                 fetch(url)
                     .then(res => res.json())
                     .then(apiData => setData(apiData))
-                //const res = await fetch(url);
-                //const apiData = await res.json(); 
-                //setData(apiData);
                 setLoading(true);
             } catch(error) {
                 console.log(error);
@@ -60,22 +69,21 @@ function App() {
 
     return (
         <>
-            {(data ) ? (<Main data={data} handleToggleModal={handleToggleModalForBackground} handleLoading={handleLoading}/>) : 
-                            (<div className="loadingState">
-                                <i className="fa-solid fa-gear"></i>
-                            </div>)}
+            {data ? (<Main data={data} handleToggleModal={handleToggleModalForBackground} handleLoading={handleLoading}/>) : 
+                            (<div className="loadingState"> <i className="fa-solid fa-gear"></i> </div>)}
             
             {showModal && (<SideBar data={data} handleToggleModal={handleToggleModal}/>)}
 
-            {loading && (<div className="loadingState">
-                                <i className="fa-solid fa-gear"></i>
-                            </div>)}
+            {loading && (<div className="loadingState"> <i className="fa-solid fa-gear"></i> </div>)}
 
             {data && (<Footer data={data} 
                 handleToggleModal={handleToggleModal}
-                handleToggleCalendar={handleToggleCalendar}/>)}
+                handleToggleCalendar={handleToggleCalendar}
+                handleShowInfo={handleShowInfo}/>)}
 
             {showCalendar && <DtPicker selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>}
+
+            {showInfo && <InfoProject/>}
         </>
     );
 }

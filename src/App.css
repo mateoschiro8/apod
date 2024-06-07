@@ -180,3 +180,20 @@ footer button:hover {
     color: black;
     border-radius: 5%;
 }
+
+.infoPanel {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #FEFAE0;
+    color: black;
+    border-radius: 50px;
+    padding: 2%;
+    box-shadow: 0 0 300px 80px rgba(0, 0, 0, 1);
+}
+
+.infoPanel a {
+    text-decoration: none; 
+    color: #FF5733;
+}
